@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="java.util.List" />
+        <import type="com.zq.library.entity.Task" />
+
+        <variable
+            name="handlers"
+            type="com.zq.library.activities.DataBindActivity" />
+
+        <variable
+            name="checkBox"
+            type="android.widget.CheckBox" />
+
+        <variable
+            name="handler"
+            type="com.zq.library.entity.Handler" />
+
+        <variable
+            name="user"
+            type="com.zq.library.entity.User" />
+        <variable
+            name="task"
+            type="Task" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="tvClick"
+            android:padding="16dp"
+            android:text="@{`name :` + user.name+`age :`+user.age+(user.male? `男`:`女`)}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            tools:text="123" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="tvClick"
+            android:padding="16dp"
+            android:text="@{user.male? `男`:`女`}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            tools:text="123" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:text="checkbox show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{checkBox.checked ? View.VISIBLE : View.GONE}" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{()-> handlers.onMainClick(false)}"
+            android:text="MainClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{handler::onHandlerClick}"
+            android:text="handlerClick" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{(view)-> handlers.showTask(view,task)}"
+            android:text="showTask" />
+
+        <!--<Button-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:onClick="@{(view)-> handler.showTask(view,task)}"-->
+            <!--android:text="showTask2" />-->
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:padding="18dp" />
+
+        <!--多个参数可以任意命名 onCheckedChanged chekbox变换-->
+        <CheckBox
+            android:layout_gravity="right"
+            android:padding="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onCheckedChanged="@{(cb, isChecked) -> handler.onCompletedChanged(task, isChecked)}" />
+
+        <!-- 三目运算-->
+        <TextView
+            android:padding="18dp"
+            android:text="用户是male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{user.isMale ? View.VISIBLE : View.GONE}"/>
+
+        <TextView
+            android:padding="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.name ?? `Default LastName`}"
+            />
+
+        <TextView
+            android:padding="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/fullname(user.name)}"
+            />
+
+        <TextView
+            android:id="@+id/tv_purse"
+            android:padding="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <!-- Context -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{handler.loadString(context)}"/>
+
+
+        <Button
+            android:onClick="startObserverActivity"
+            android:textAllCaps="false"
+            android:text="startObserverActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="ObserverCollectionActivity"
+            android:textAllCaps="false"
+            android:text="ObserverCollectionActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:onClick="jumpDemoActivity"
+            android:textAllCaps="false"
+            android:text="DemoActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    </ScrollView>
+</layout>
+

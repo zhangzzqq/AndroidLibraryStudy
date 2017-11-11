@@ -4,87 +4,18 @@
 
     <data>
 
-        <import type="android.view.View" />
-
-        <import type="java.util.List" />
-
-        <import type="com.zq.library.activities.MainActivity" />
-
-        <variable
-            name="handlers"
-            type="MainActivity" />
-
-        <variable
-            name="checkBox"
-            type="android.widget.CheckBox" />
-
-        <variable
-            name="handler"
-            type="com.zq.library.entity.Handler" />
-
-        <variable
-            name="user"
-            type="com.zq.library.entity.User" />
-
     </data>
 
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:padding="5dip"
+        tools:context="com.connorlin.databinding.context.MainActivity">
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="tvClick"
-            android:padding="16dp"
-            android:text="@{`name :` + user.name+`age :`+user.age+(user.male? `男`:`女`)}"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            tools:text="123" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="tvClick"
-            android:padding="16dp"
-            android:text="@{user.male? `男`:`女`}"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            tools:text="123" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:text="checkbox show"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="@{checkBox.checked ? View.VISIBLE : View.GONE}" />
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:onClick="@{()-> handlers.onMainClick(false)}"
-            android:text="MainClick" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:onClick="@{handler::onHandlerClick}"
-            android:text="handlerClick" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:padding="18dp" />
-
-
-    </LinearLayout>
-
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+    </RelativeLayout>
 </layout>
-

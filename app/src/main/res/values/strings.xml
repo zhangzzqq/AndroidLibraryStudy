@@ -1,3 +1,23 @@
 <resources>
+    <!--“%1$d”表达的意思是整个name=”old”中，第一个整型的替代。-->
+    <!--如果一个name中有两个需要替换的整型内容，则第二个写为：%2$d-->
+    <!--<string name="introduce">我的名字叫%1$s，我来自%2$s</string>-->
+
     <string name="app_name">AndroidLibraryStudy</string>
+    <string name="fullname">FullName: %1$s</string>
+    <string name="string_from_context">String from context</string>
+
+    <plurals name="buy_kindle">
+        <item quantity="one">I want to buy a Kindle</item>
+        <item quantity="other">I want to buy some Kindles</item>
+    </plurals>
+
+    <string name="empty">Empty</string>
+    <string name="add_contact">Add contacts</string>
+    <string name="phone">Phone</string>
+
+
+
+
+
 </resources>

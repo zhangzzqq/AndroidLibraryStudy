@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class=".DemoBinding">
+
+        <import type="com.zq.library.entity.DemoHandler"/>
+
+        <variable
+            name="contact"
+            type="com.zq.library.entity.ObservableContact"/>
+
+        <variable
+            name="handler"
+            type="DemoHandler"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:text="@={contact.name}"
+            android:layout_alignParentLeft="true" />
+
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_name"
+            android:ems="10"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:text="@={contact.phone}"
+            android:layout_alignParentLeft="true" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_phone"
+            android:layout_marginTop="35dp"/>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/edit_phone"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:enabled="@{contact.name.length() > 1 &amp;&amp; contact.phone.length() == 11}"
+            android:onClick="@{handler::onClick}"
+            android:text="@string/add_contact"
+            android:textAllCaps="false"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="150dp"
+            android:text="@string/empty"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</layout>
