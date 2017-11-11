@@ -1,57 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <data class="MainBinding">
+    <data>
+
         <import type="android.view.View" />
-        <import type="com.example.User"/>
 
         <import type="java.util.List" />
 
-        <import
-            alias="xiaoming"
-            type="com.example.same.Presenter" />
-
-        <import
-            alias="xiaohua"
-            type="com.example.Presenter" />
-
-        <variable
-            name="user"
-            type="com.example.User" />
+        <import type="com.zq.library.activities.MainActivity" />
 
         <variable
             name="handlers"
-            type="com.example.MyHandlers" />
+            type="MainActivity" />
 
-        <variable
-            name="click"
-            type="com.example.MainActivity" />
-
-        <variable
-            name="task"
-            type="com.example.Task" />
-
-        <variable
-            name="presenter"
-            type="xiaohua" />
-
-        <variable
-            name="btn"
-            type="com.example.MainActivity"
-            />
-        <variable
-            name="message"
-            type="com.example.Sample"/>
-
-        <variable
-            name="presenter2"
-            type="xiaoming"  />
-        
         <variable
             name="checkBox"
-            type="android.widget.CheckBox"/>
+            type="android.widget.CheckBox" />
+
+        <variable
+            name="handler"
+            type="com.zq.library.entity.Handler" />
+
+        <variable
+            name="user"
+            type="com.zq.library.entity.User" />
 
     </data>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,81 +35,54 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{user.firstName}" />
+            android:onClick="tvClick"
+            android:padding="16dp"
+            android:text="@{`name :` + user.name+`age :`+user.age+(user.male? `男`:`女`)}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            tools:text="123" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="tvClick"
+            android:padding="16dp"
+            android:text="@{user.male? `男`:`女`}"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            tools:text="123" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:text="checkbox show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.lastName}" />
+            android:visibility="@{checkBox.checked ? View.VISIBLE : View.GONE}" />
+
 
         <Button
-            android:id="@+id/btn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:onClick="@{click::btnClick}"
-            android:text="btnClick" />
+            android:onClick="@{()-> handlers.onMainClick(false)}"
+            android:text="MainClick" />
 
         <Button
-            android:id="@+id/btn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:onClick="@{handlers::onClickFriend}"
-            android:text="btnClick2" />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> presenter.onSaveClick()}"
-            android:text="btn3" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> btn.onMainClick(12)}"
-            android:text="btn4" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> presenter2.onPresenterClick(112)}"
-            android:text="btn5" />
-
-        <TextView
-            android:text="user already register!"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="@{user.isRegister ? View.VISIBLE : View.INVISIBLE}"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{user.phone ?? @string/empty}"/>
-
+            android:onClick="@{handler::onHandlerClick}"
+            android:text="handlerClick" />
 
         <CheckBox
+            android:id="@+id/checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/checkBox"/>
+            android:layout_gravity="right"
+            android:padding="18dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            android:visibility="@{!checkBox.checked ? View.VISIBLE : View.GONE}"/>
-
-
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/tv_sameple"
-            android:text="@{`include : `+message.age +`   ` + message.gender+`   `  + message.name}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.example.databindingstudy;
+package com.zq.library.androidlibrarystudy;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.databindingstudy", appContext.getPackageName());
+        assertEquals("library.zq.com.androidlibrarystudy", appContext.getPackageName());
     }
 }

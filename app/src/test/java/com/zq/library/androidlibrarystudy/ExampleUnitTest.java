@@ -1,4 +1,4 @@
-package com.example.databindingstudy;
+package com.zq.library.androidlibrarystudy;
 
 import org.junit.Test;
 
