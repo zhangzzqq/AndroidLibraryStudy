@@ -17,15 +17,26 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activities.ObserverActivity"/>
-        <activity android:name=".activities.ObserverCollectionActivity"/>
-        <activity android:name=".activities.DemoActivity"/>
+        <activity android:name=".activities.ObserverActivity" />
+        <activity android:name=".activities.ObserverCollectionActivity" />
+        <activity android:name=".activities.DemoActivity" />
         <activity android:name=".activities.DataBindActivity">
-        <intent-filter>
-            <action android:name="connorlin.databinding.action.DataBindActivity"/>
+            <intent-filter>
+                <action android:name="connorlin.databinding.action.DataBindActivity" />
 
-            <category android:name="android.intent.category.DEFAULT"/>
-        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.VolleyStudyActivity">
+
+            <intent-filter>
+
+                <action android:name="connorlin.databinding.action.VolleyStudyActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+
         </activity>
     </application>
 

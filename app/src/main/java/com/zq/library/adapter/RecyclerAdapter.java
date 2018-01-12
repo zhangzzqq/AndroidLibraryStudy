@@ -27,7 +27,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Bindin
     private static final String ACTION_PRE = "connorlin.databinding.action.";
 
     private String[] mType = new String[]{
-            "DataBindActivity" };
+            "DataBindActivity" ,"VolleyStudyActivity"};
 
     private List<RecyclerItem> mRecyclerItemList = new ArrayList<>();
 
